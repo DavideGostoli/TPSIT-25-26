@@ -1,1 +1,39 @@
-<!DOCTYPE html> <html lang="it"> <head> <title> Anagrafica1.0 </title> <meta charset="UTF-8"> <link rel="stylesheet" href="style.css"> </head> <body> <table id="demo" class="table"></table> <div><label for="colonne">ricerca per anni:</label> <input type="number" name="anni" id="anni"> <button type="button" onclick="ricercaEta()">cerca</button></div> <br> <table id="demo2" class="table"></table> <div><label for="colonne">ricerca per iniziale del cognome:</label> <input type="text" name="iniziale" id="iniziale"> <button type="button" onclick="ricercaIniziale()">cerca</button></div> <br> <table id="demo3" class="table"></table> <div><button type="button" onclick="generazione()">tabella con generazione</button></div> <br> <table id="demo4" class="table"></table> <script type="text/javascript" src="script.js"></script> </body> </html>
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+    <title> Anagrafica1.0 </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <tabella id="tabPrincipale" class="tabella"></tabella>
+
+
+    <div><label for="colonne">cerca per età:</label>
+    <input type="number" name="anni" id="anni">
+    <button type="button" onclick="ricercaEta()">cerca</button></div>
+    <br>
+    <tabella id="tabEta" class="tabella"></tabella>
+
+    <div><label for="colonne">cerca per cognome:</label>
+    <input type="text" name="iniziale" id="iniziale">
+    <button type="button" onclick="ricercaIniziale()">cerca</button></div>
+    <br>
+    <tabella id="tabIniziale" class="tabella"></tabella>
+
+    <div><button type="button" onclick="generazione()">mostra generazioni</button></div>
+    <br>
+    <tabella id="tabGenerazioni" class="tabella"></tabella>
+    
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>
+
+
+
