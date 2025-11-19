@@ -1,99 +1,115 @@
 
 
-var x = 0;
+var indice = 0;
 
-var stampa = "";
-var stampa2 = "";
-var stampa3 = "";
-var stampa4 = "";
+var righePrincipali = "";
+var righeEta = "";
+var righeLettera = "";
+var righeGenerazioni = "";
 
-var xmlhttp = new XMLHttpRequest();
+var richiesta = new richiestaRequest();
 
-xmlhttp.open("GET", "elenco.json", true);
+richiesta.open("GET", "elenco.json", true);
 
-xmlhttp.send();
+richiesta.send();
 
-xmlhttp.onreadystatechange = function () {
+richiesta.onreadystatechange = function () {
 
     if (this.readyState == 4 && this.status == 200) {
 
-        var myObj = JSON.parse(this.responseText);
+        var archivio = JSON.parse(this.responseText);
 
-        for (x in myObj.elenco) {
+        for (indice in archivio.elenco) {
 
-            stampa += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
+            richePrinicipali += "<tr>" 
+                + "<td>" + archivio.elenco[indice].nome + "</td>" 
+                + "<td>" + archivio.elenco[indice].cognome + "</td>" 
+                + "<td>" + archivio.elenco[indice].anni + "</td>"
+                + "<td>" + archivio.elenco[indice].nascita + "</td>" + "</tr>";
 
         }
 
-        document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
-        stampa="";
+        document.getElementById("tabPrincipale").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + righePrincipali;
+        righePrincipali="";
 
     }
 
 };
 
 function ricercaEta() {
-    var minEta= document.getElementById("anni").value;
-    xmlhttp.open("GET", "elenco.json", true);
-    xmlhttp.send();
-    xmlhttp.onreadystatechange = function () {
+    var min= document.getElementById("anni").value;
+    richiesta.open("GET", "elenco.json", true);
+    richiesta.send();
+    richiesta.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var myObj = JSON.parse(this.responseText);
-            for (x in myObj.elenco) {
-                if (myObj.elenco[x].anni >= minEta) {
-                    stampa2 += "<tr>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "</tr>";
+            var archivio = JSON.parse(this.responseText);
+            for (indice in archivio.elenco) {
+                if (archivio.elenco[indice].anni >= min) {
+                    righeEta += "<tr>" 
+                        + "<td>" + archivio.elenco[indice].cognome + "</td>" 
+                        + "<td>" + archivio.elenco[indice].anni + "</td>" + "</tr>";
                 }
             }
-            document.getElementById("demo2").innerHTML = "<tr>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "</tr>" + stampa2;
-            stampa2="";
+            document.getElementById("tabEta").innerHTML = "<tr>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "</tr>" + righeEta;
+            righeEta="";
         }
     };
 }
 
 function ricercaIniziale() {
-    var iniziale= document.getElementById("iniziale").value.toUpperCase();
-    xmlhttp.open("GET", "elenco.json", true);
-    xmlhttp.send();
-    xmlhttp.onreadystatechange = function () {
+    var lettera= document.getElementById("lettera").value.toUpperCase();
+    richiesta.open("GET", "elenco.json", true);
+    richiesta.send();
+    richiesta.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var myObj = JSON.parse(this.responseText);
-                for (x in myObj.elenco) {
-                    if (myObj.elenco[x].cognome.charAt(0) == iniziale) {
-                        stampa3 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
+            var archivio = JSON.parse(this.responseText);
+                for (indice in archivio.elenco) {
+                    if (archivio.elenco[indice].cognome.charAt(0) == lettera) {
+                        righeLettera += "<tr>" 
+                            + "<td>" + archivio.elenco[indice].nome + "</td>"
+                            + "<td>" + archivio.elenco[indice].cognome + "</td>" 
+                            + "<td>" + archivio.elenco[indice].anni + "</td>" +
+                            "<td>" + archivio.elenco[indice].nascita + "</td>" + "</tr>";
                     }
                 }
-            document.getElementById("demo3").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa3;
-            stampa3="";
+            document.getElementById("tabIniziale").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + righeLettera;
+            righeLettera="";
         }   
     };
 }
 
 function generazione() {
     var iniziale= document.getElementById("iniziale").value;
-    xmlhttp.open("GET", "elenco.json", true);
-    xmlhttp.send();
-    xmlhttp.onreadystatechange = function () {
+    richiesta.open("GET", "elenco.json", true);
+    richiesta.send();
+    richiesta.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-        var myObj = JSON.parse(this.responseText);
-        for (x in myObj.elenco) {
-            stampa4 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>";
-            if(myObj.elenco[x].DN >= 2013)
-                stampa4 +="<td>" + "Generazione Alpha" + "</td>" + "</tr>";
-            else if (myObj.elenco[x].DN >= 1997) {
-                stampa4 +="<td>" + "Generazione Z" + "</td>" + "</tr>";
-            } else if(myObj.elenco[x].DN >= 1981)
-                stampa4 +="<td>" + "Millenials" + "</td>" + "</tr>";
-            else if (myObj.elenco[x].DN >= 1965) {
-                stampa4 +="<td>" + "Generazione X" + "</td>" + "</tr>";
-            } else if(myObj.elenco[x].DN >= 1946)
-                stampa4 +="<td>" + "Baby Boomers" + "</td>" + "</tr>";
-            else if (myObj.elenco[x].DN >= 1928) {
-                stampa4 +="<td>" + "Generazione Silenziosa" + "</td>" + "</tr>";
+        var archivio = JSON.parse(this.responseText);
+        for (indice in archivio.elenco) {
+            righeGenerazioni += "<tr>" 
+                + "<td>" + archivio.elenco[indice].nome + "</td>" 
+                + "<td>" + archivio.elenco[indice].cognome + "</td>" 
+                + "<td>" + archivio.elenco[indice].anni + "</td>" 
+                + "<td>" + archivio.elenco[indice].nascita + "</td>";
+            
+            if(archivio.elenco[indice].nascita >= 2013)
+                righeGenerazioni +="<td>" + "Generazione Alpha" + "</td>" + "</tr>";
+            else if (archivio.elenco[indice].nascita >= 1997) {
+                righeGenerazioni +="<td>" + "Generazione Z" + "</td>" + "</tr>";
+            } else if(archivio.elenco[indice].nascita >= 1981)
+                righeGenerazioni +="<td>" + "Millenials" + "</td>" + "</tr>";
+            else if (archivio.elenco[indice].nascita >= 1965) {
+                righeGenerazioni +="<td>" + "Generazione indice" + "</td>" + "</tr>";
+            } else if(archivio.elenco[indice].nascita >= 1946)
+                righeGenerazioni +="<td>" + "Baby Boomers" + "</td>" + "</tr>";
+            else if (archivio.elenco[indice].nascita >= 1928) {
+                righeGenerazioni +="<td>" + "Generazione Silenziosa" + "</td>" + "</tr>";
             } else
-                stampa4 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
+                righeGenerazioni +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
         }
-        document.getElementById("demo4").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + stampa4;
-        stampa4="";
+        document.getElementById("tabGenerazioni").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + righeGenerazioni;
+        righeGenerazioni="";
     }
     };
 }
+
