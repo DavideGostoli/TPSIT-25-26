@@ -65,28 +65,29 @@ h2 {
 }
 
 /* Tabelle */
-.table {
+.tabella {
     width: 100%;
     border-collapse: collapse;
     margin-top: 25px;
 }
 
-.table th, .table td {
+.tabella th, .tabella td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     text-align: left;
 }
 
-.table th {
+.tabella th {
     background-color: #0077cc;
     color: white;
 }
 
-.table tr:nth-child(even) {
+.tabella tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.table tr:hover {
+.tabella tr:hover {
     background-color: #e6f0ff;
 }
+
 
