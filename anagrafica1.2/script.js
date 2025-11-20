@@ -24,7 +24,7 @@ richiesta.onreadystatechange = function () {
                 + "<td>" + archivio.elenco[indice].nome + "</td>" 
                 + "<td>" + archivio.elenco[indice].cognome + "</td>"
                 + "<td>" + archivio.elenco[indice].anni + "</td>"
-                + "<td>" + archivio.elenco[indice].DN + "</td>"
+                + "<td>" + archivio.elenco[indice].nascita + "</td>"
                 + "</tr>";
 
         }
@@ -63,7 +63,7 @@ function ricercaIniziale() {
             var archivio = JSON.parse(this.responseTeindicet);
                 for (indice in archivio.elenco) {
                     if (archivio.elenco[indice].cognome.charAt(0) == iniziale) {
-                        righeLettera += "<tr>" + "<td>" + archivio.elenco[indice].nome + "</td>" + "<td>" + archivio.elenco[indice].cognome + "</td>" + "<td>" + archivio.elenco[indice].anni + "</td>" + "<td>" + archivio.elenco[indice].DN + "</td>" + "</tr>";
+                        righeLettera += "<tr>" + "<td>" + archivio.elenco[indice].nome + "</td>" + "<td>" + archivio.elenco[indice].cognome + "</td>" + "<td>" + archivio.elenco[indice].anni + "</td>" + "<td>" + archivio.elenco[indice].nascita + "</td>" + "</tr>";
                     }
                 }
             document.getElementById("demo3").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + righeLettera;
@@ -80,18 +80,18 @@ function generazione() {
         if (this.readyState == 4 && this.status == 200) {
         var archivio = JSON.parse(this.responseTeindicet);
         for (indice in archivio.elenco) {
-            righeGenerazioni += "<tr>" + "<td>" + archivio.elenco[indice].nome + "</td>" + "<td>" + archivio.elenco[indice].cognome + "</td>" + "<td>" + archivio.elenco[indice].anni + "</td>" + "<td>" + archivio.elenco[indice].DN + "</td>";
-            if(archivio.elenco[indice].DN >= 2013)
+            righeGenerazioni += "<tr>" + "<td>" + archivio.elenco[indice].nome + "</td>" + "<td>" + archivio.elenco[indice].cognome + "</td>" + "<td>" + archivio.elenco[indice].anni + "</td>" + "<td>" + archivio.elenco[indice].nascita + "</td>";
+            if(archivio.elenco[indice].nascita >= 2013)
                 righeGenerazioni +="<td>" + "Generazione Alpha" + "</td>" + "</tr>";
-            else if (archivio.elenco[indice].DN >= 1997) {
+            else if (archivio.elenco[indice].nascita >= 1997) {
                 righeGenerazioni +="<td>" + "Generazione Z" + "</td>" + "</tr>";
-            } else if(archivio.elenco[indice].DN >= 1981)
+            } else if(archivio.elenco[indice].nascita >= 1981)
                 righeGenerazioni +="<td>" + "Millenials" + "</td>" + "</tr>";
-            else if (archivio.elenco[indice].DN >= 1965) {
+            else if (archivio.elenco[indice].nascita >= 1965) {
                 righeGenerazioni +="<td>" + "Generazione indice" + "</td>" + "</tr>";
-            } else if(archivio.elenco[indice].DN >= 1946)
+            } else if(archivio.elenco[indice].nascita >= 1946)
                 righeGenerazioni +="<td>" + "Baby Boomers" + "</td>" + "</tr>";
-            else if (archivio.elenco[indice].DN >= 1928) {
+            else if (archivio.elenco[indice].nascita >= 1928) {
                 righeGenerazioni +="<td>" + "Generazione Silenziosa" + "</td>" + "</tr>";
             } else
                 righeGenerazioni +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
@@ -101,11 +101,6 @@ function generazione() {
     }
     };
 }
-/*  Greatest Generation (1901-1927)
-    Generazione Silenziosa (1928-1945)
-    Baby Boomers  (1946-1964)
-    Generazione indice  (1965-1980)
-    Millenials  (1981-1996)
-    Generazione Z (1997-2012) 
-    Generazione Alpha (dal 2013 in poi)*/
+
+
 
