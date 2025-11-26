@@ -1,4 +1,4 @@
-/* Reset e font */
+
 * {
     margin: 0;
     padding: 0;
@@ -89,5 +89,6 @@ h2 {
 .tabella tr:hover {
     background-color: #e6f0ff;
 }
+
 
 
