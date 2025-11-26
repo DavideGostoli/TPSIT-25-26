@@ -20,15 +20,15 @@ xmlhttp.onreadystatechange = function () {
         var persone = xmlDoc.getElementsByTagName("persona");
 
         for (x = 0; x < persone.length; x++) {
-            var nome = persone[x].getElementsByTagName("nome")[0].chilnascitaodes[0].nodeValue;
-            var cognome = persone[x].getElementsByTagName("cognome")[0].chilnascitaodes[0].nodeValue;
-            var anni = persone[x].getElementsByTagName("anni")[0].chilnascitaodes[0].nodeValue;
-            var nascita = persone[x].getElementsByTagName("nascita")[0].chilnascitaodes[0].nodeValue;
+            var nome = persone[x].getElementsByTagName("nome")[0].chilDNodes[0].nodeValue;
+            var cognome = persone[x].getElementsByTagName("cognome")[0].chilDNodes[0].nodeValue;
+            var anni = persone[x].getElementsByTagName("anni")[0].chilDNodes[0].nodeValue;
+            var DN = persone[x].getElementsByTagName("DN")[0].chilDNodes[0].nodeValue;
             
-            stampa += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${nascita} </td></tr>`;
+            stampa += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${DN} </td></tr>`;
         }
 
-        document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di Nascita </th></tr> ${stampa}`;
+        document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di DN </th></tr> ${stampa}`;
         stampa = "";
 
     }
@@ -44,15 +44,15 @@ function inizio(){
             var persone = xmlDoc.getElementsByTagName("persona");
 
             for (x = 0; x < persone.length; x++) {
-                var nome = persone[x].getElementsByTagName("nome")[0].chilnascitaodes[0].nodeValue;
-                var cognome = persone[x].getElementsByTagName("cognome")[0].chilnascitaodes[0].nodeValue;
-                var anni = persone[x].getElementsByTagName("anni")[0].chilnascitaodes[0].nodeValue;
-                var nascita = persone[x].getElementsByTagName("nascita")[0].chilnascitaodes[0].nodeValue;
+                var nome = persone[x].getElementsByTagName("nome")[0].chilDNodes[0].nodeValue;
+                var cognome = persone[x].getElementsByTagName("cognome")[0].chilDNodes[0].nodeValue;
+                var anni = persone[x].getElementsByTagName("anni")[0].chilDNodes[0].nodeValue;
+                var DN = persone[x].getElementsByTagName("DN")[0].chilDNodes[0].nodeValue;
                 
-                stampa += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${nascita} </td></tr>`;
+                stampa += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${DN} </td></tr>`;
             }
             
-            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di Nascita </th></tr> ${stampa}`;
+            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di DN </th></tr> ${stampa}`;
             stampa = "";
         }
     };
@@ -69,8 +69,8 @@ function ricercaEta() {
             var persone = xmlDoc.getElementsByTagName("persona");
 
             for (x = 0; x < persone.length; x++) {
-                var cognome = persone[x].getElementsByTagName("cognome")[0].chilnascitaodes[0].nodeValue;
-                var anni = persone[x].getElementsByTagName("anni")[0].chilnascitaodes[0].nodeValue;
+                var cognome = persone[x].getElementsByTagName("cognome")[0].chilDNodes[0].nodeValue;
+                var anni = persone[x].getElementsByTagName("anni")[0].chilDNodes[0].nodeValue;
                 
                 if (anni >= minEta) {
                     stampa2 += `<tr><td> ${cognome} </td><td> ${anni} </td></tr>`;
@@ -99,17 +99,17 @@ function ricercaIniziale() {
             var persone = xmlDoc.getElementsByTagName("persona");
 
             for (x = 0; x < persone.length; x++) {
-                var nome = persone[x].getElementsByTagName("nome")[0].chilnascitaodes[0].nodeValue;
-                var cognome = persone[x].getElementsByTagName("cognome")[0].chilnascitaodes[0].nodeValue;
-                var anni = persone[x].getElementsByTagName("anni")[0].chilnascitaodes[0].nodeValue;
-                var nascita = persone[x].getElementsByTagName("nascita")[0].chilnascitaodes[0].nodeValue;
+                var nome = persone[x].getElementsByTagName("nome")[0].chilDNodes[0].nodeValue;
+                var cognome = persone[x].getElementsByTagName("cognome")[0].chilDNodes[0].nodeValue;
+                var anni = persone[x].getElementsByTagName("anni")[0].chilDNodes[0].nodeValue;
+                var DN = persone[x].getElementsByTagName("DN")[0].chilDNodes[0].nodeValue;
                 
                 if (cognome.startsWith(iniziale)) {
-                    stampa3 += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${nascita} </td></tr>`;
+                    stampa3 += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${DN} </td></tr>`;
                 }
             }
             
-            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di Nascita </th></tr> ${stampa3}`;
+            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di DN </th></tr> ${stampa3}`;
             stampa3 = "";
         }   
     };
@@ -125,30 +125,30 @@ function generazione() {
             var persone = xmlDoc.getElementsByTagName("persona");
 
             for (x = 0; x < persone.length; x++) {
-                var nome = persone[x].getElementsByTagName("nome")[0].chilnascitaodes[0].nodeValue;
-                var cognome = persone[x].getElementsByTagName("cognome")[0].chilnascitaodes[0].nodeValue;
-                var anni = persone[x].getElementsByTagName("anni")[0].chilnascitaodes[0].nodeValue;
-                var nascita = persone[x].getElementsByTagName("nascita")[0].chilnascitaodes[0].nodeValue;
+                var nome = persone[x].getElementsByTagName("nome")[0].chilDNodes[0].nodeValue;
+                var cognome = persone[x].getElementsByTagName("cognome")[0].chilDNodes[0].nodeValue;
+                var anni = persone[x].getElementsByTagName("anni")[0].chilDNodes[0].nodeValue;
+                var DN = persone[x].getElementsByTagName("DN")[0].chilDNodes[0].nodeValue;
                 
-                stampa4 += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${nascita} </td>`;
+                stampa4 += `<tr><td> ${nome} </td><td> ${cognome} </td><td> ${anni} </td><td> ${DN} </td>`;
                 
-                if(nascita >= 2013)
+                if(DN >= 2013)
                     stampa4 += `<td> Generazione Alpha </td></tr>`;
-                else if (nascita >= 1997) {
+                else if (DN >= 1997) {
                     stampa4 += `<td> Generazione Z </td></tr>`;
-                } else if(nascita >= 1981)
+                } else if(DN >= 1981)
                     stampa4 += `<td> Millenials </td></tr>`;
-                else if (nascita >= 1965) {
+                else if (DN >= 1965) {
                     stampa4 += `<td> Generazione X </td></tr>`;
-                } else if(nascita >= 1946)
+                } else if(DN >= 1946)
                     stampa4 += `<td> Baby Boomers </td></tr>`;
-                else if (nascita >= 1928) {
+                else if (DN >= 1928) {
                     stampa4 += `<td> Generazione Silenziosa </td></tr>`;
                 } else
                     stampa4 += `<td> Greatest Generation </td></tr>`;
             }
             
-            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di Nascita </th><th> generazione </th></tr> ${stampa4}`;
+            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di DN </th><th> generazione </th></tr> ${stampa4}`;
             stampa4 = "";
         }
     };
@@ -161,4 +161,5 @@ function generazione() {
     Millenials  (1981-1996)
     Generazione Z (1997-2012) 
     Generazione Alpha (dal 2013 in poi)*/
+
 
