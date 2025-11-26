@@ -154,12 +154,4 @@ function generazione() {
     };
 }
 
-/*  Greatest Generation (1901-1927)
-    Generazione Silenziosa (1928-1945)
-    Baby Boomers  (1946-1964)
-    Generazione X  (1965-1980)
-    Millenials  (1981-1996)
-    Generazione Z (1997-2012) 
-    Generazione Alpha (dal 2013 in poi)*/
-
 
