@@ -111,7 +111,7 @@ function ricercaIniziale() {
             
             document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cognome </th><th> anni </th><th> Data di nascita </th></tr> ${righeLettera}`;
             righeLettera = "";
-        }   
+        }
     };
 }
 
@@ -153,6 +153,7 @@ function generazione() {
         }
     };
 }
+
 
 
 
