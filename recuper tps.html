@@ -1,0 +1,47 @@
+z<!DOCTYPE html>
+<html>
+<head>
+<title>Esempio XMLHttpRequest</title>
+</head>
+
+<body>
+
+<h1>Carica dati dal server</h1>
+<button onclick="caricaDati()">Carica dati</button>
+
+<p id="risultato"></p>
+
+<script>
+
+function caricaDati(){
+
+    // 1 creo l'oggetto XMLHttpRequest
+    let xhr = new XMLHttpRequest();
+
+    // 2 preparo la request
+    xhr.open("GET", "dati.json", true);
+
+    // 3 callback con arrow function
+    xhr.onload = () => {
+
+        // controllo risposta del server
+        if(xhr.status == 200){
+
+            // converto JSON in oggetto
+            let dati = JSON.parse(xhr.responseText);
+
+            // stampo nella pagina
+            document.getElementById("risultato").innerHTML =
+            "Nome: " + dati.nome + " - Età: " + dati.eta;
+
+        }
+    }
+
+    // 4 invio la request
+    xhr.send();
+}
+
+</script>
+
+</body>
+</html>
